@@ -44,6 +44,7 @@ public class NeuronService {
 		NeuronDto newNeuron = new NeuronDto(neuronId, null, layer);
 
 		try {
+//			tedstin
 			neuronDao.save(newNeuron);
 //			wordDao.updateWordByNeuron(newNeuronI);
 		}
