@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13581637191111" configfile="/cl-java/src/main/webapp/WEB-INF/faces-navigation.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="7666" id="pf13581637351732" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13581637351733 pf13581637351734 pf13581637351735 pf13581637351736 pf13581637351737 pf13581637351738 pf13581637351739 pf135816373517310 pf135816373517311 pf135816373517312 pf135816373517313 pf135816373517314 pf135816373517315 pf135816373517316 pf135816373517317 pf135816373517318 pf135816373517319 pf135816373517320 pf135816373517321 pf135816373517322 pf135816373517323 pf135816373517324 pf135816373517325 pf135816373517326 pf135816373517327 pf135816373517328 pf135816373517329 pf135816373517330 pf135816373517331 pf135816373517332 pf135816373517333 pf135816373517334 pf135816373517335 pf135816373517336 pf135816373517337 pf135816373517338 pf135816373517339 pf135816373517340 pf135816373517341 pf135816373517342" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="178" id="pf135816373517343" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13581637351733" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="imageviewer.xhtml" x="338" y="946" id="pf135816373517344" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf13581637351734" path="/imageviewer.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="close.xhtml" x="338" y="1330" id="pf135816373517445" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf13581637351735" path="/close.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="closeandrefresh.xhtml" x="338" y="1714" id="pf135816373517446" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf13581637351736" path="/closeandrefresh.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="objects.xhtml" x="338" y="2098" id="pf135816373517447" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf13581637351737" path="/objects.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="viewObject.xhtml" x="338" y="2482" id="pf135816373517448" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf13581637351738" path="/viewObject.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="confirmReceivedObjects.xhtml" x="338" y="2866" id="pf135816373517449" referenceLink="//@navigationRule.0/@navigationCase.7/@toViewId|" inlinks="pf13581637351739" path="/confirmReceivedObjects.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="queues.xhtml" x="338" y="3250" id="pf135816373517450" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" inlinks="pf135816373517310" path="/queues.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="orders.xhtml" x="338" y="3634" id="pf135816373517451" referenceLink="//@navigationRule.0/@navigationCase.9/@toViewId|" inlinks="pf135816373517311" path="/orders.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="order.xhtml" x="338" y="4018" id="pf135816373517452" referenceLink="//@navigationRule.0/@navigationCase.10/@toViewId|" inlinks="pf135816373517312" path="/order.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="order-addEdit.xhtml" x="338" y="4402" id="pf135816373517453" referenceLink="//@navigationRule.0/@navigationCase.11/@toViewId|" inlinks="pf135816373517313" path="/order-addEdit.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="reports.xhtml" x="338" y="4786" id="pf135816373517454" referenceLink="//@navigationRule.0/@navigationCase.12/@toViewId|" inlinks="pf135816373517314" path="/reports.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="edok.xhtml" x="338" y="5170" id="pf135816373517455" referenceLink="//@navigationRule.0/@navigationCase.13/@toViewId|" inlinks="pf135816373517315" path="/edok.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="management.xhtml" x="338" y="5554" id="pf135816373517456" referenceLink="//@navigationRule.0/@navigationCase.14/@toViewId|" inlinks="pf135816373517316" path="/management.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="importFiles.xhtml" x="338" y="5938" id="pf135816373517457" referenceLink="//@navigationRule.0/@navigationCase.15/@toViewId|" inlinks="pf135816373517317" path="/importFiles.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="notification.xhtml" x="338" y="6322" id="pf135816373517458" referenceLink="//@navigationRule.0/@navigationCase.16/@toViewId|" inlinks="pf135816373517318" path="/notification.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addEditNotification.xhtml" x="338" y="6706" id="pf135816373517459" referenceLink="//@navigationRule.0/@navigationCase.17/@toViewId|" inlinks="pf135816373517319" path="/addEditNotification.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="password.xhtml" x="338" y="7090" id="pf135816373517560" referenceLink="//@navigationRule.0/@navigationCase.18/@toViewId|" inlinks="pf135816373517320" path="/password.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="viewImage.xhtml" x="338" y="7474" id="pf135816373517561" referenceLink="//@navigationRule.0/@navigationCase.19/@toViewId|" inlinks="pf135816373517321" path="/viewImage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="extViewImage.xhtml" x="338" y="7858" id="pf135816373517562" referenceLink="//@navigationRule.0/@navigationCase.20/@toViewId|" inlinks="pf135816373517322" path="/extViewImage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="history.xhtml" x="338" y="8242" id="pf135816373517563" referenceLink="//@navigationRule.0/@navigationCase.21/@toViewId|" inlinks="pf135816373517323" path="/history.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="history-admin.xhtml" x="338" y="8626" id="pf135816373517564" referenceLink="//@navigationRule.0/@navigationCase.22/@toViewId|" inlinks="pf135816373517324" path="/history-admin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accessoriesOrders.xhtml" x="338" y="9010" id="pf135816373517565" referenceLink="//@navigationRule.0/@navigationCase.23/@toViewId|" inlinks="pf135816373517325" path="/accessoriesOrders.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="orderAccessories.xhtml" x="338" y="9394" id="pf135816373517566" referenceLink="//@navigationRule.0/@navigationCase.24/@toViewId|" inlinks="pf135816373517326" path="/orderAccessories.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="administration.xhtml" x="338" y="9778" id="pf135816373517567" referenceLink="//@navigationRule.0/@navigationCase.25/@toViewId|" inlinks="pf135816373517327" path="/administration.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editAdministrationItem.xhtml" x="338" y="10162" id="pf135816373517568" referenceLink="//@navigationRule.0/@navigationCase.26/@toViewId|" inlinks="pf135816373517328" path="/editAdministrationItem.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addAdministrationItem.xhtml" x="338" y="10546" id="pf135816373517569" referenceLink="//@navigationRule.0/@navigationCase.27/@toViewId|" inlinks="pf135816373517329" path="/addAdministrationItem.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="products.xhtml" x="338" y="10930" id="pf135816373517670" referenceLink="//@navigationRule.0/@navigationCase.28/@toViewId|" inlinks="pf135816373517330" path="/products.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="orderProduct.xhtml" x="338" y="11314" id="pf135816373517671" referenceLink="//@navigationRule.0/@navigationCase.29/@toViewId|" inlinks="pf135816373517331" path="/orderProduct.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editProduct.xhtml" x="338" y="11698" id="pf135816373517672" referenceLink="//@navigationRule.0/@navigationCase.30/@toViewId|" inlinks="pf135816373517332" path="/editProduct.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addProductAddresses.xhtml" x="338" y="12082" id="pf135816373517673" referenceLink="//@navigationRule.0/@navigationCase.31/@toViewId|" inlinks="pf135816373517333" path="/addProductAddresses.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="viewProductOrders.xhtml" x="338" y="12466" id="pf135816373517674" referenceLink="//@navigationRule.0/@navigationCase.32/@toViewId|" inlinks="pf135816373517334" path="/viewProductOrders.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="destroyingObjectsReports.xhtml" x="338" y="12850" id="pf135816373517675" referenceLink="//@navigationRule.0/@navigationCase.33/@toViewId|" inlinks="pf135816373517335" path="/destroyingObjectsReports.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editConfirmDestroyingObjectsReport.xhtml" x="338" y="13234" id="pf135816373517676" referenceLink="//@navigationRule.0/@navigationCase.34/@toViewId|" inlinks="pf135816373517336" path="/editConfirmDestroyingObjectsReport.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="prolongation.xhtml" x="338" y="13618" id="pf135816373517677" referenceLink="//@navigationRule.0/@navigationCase.35/@toViewId|" inlinks="pf135816373517337" path="/prolongation.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="viewProlongation.xhtml" x="338" y="14002" id="pf135816373517678" referenceLink="//@navigationRule.0/@navigationCase.36/@toViewId|" inlinks="pf135816373517338" path="/viewProlongation.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="closeBox.xhtml" x="338" y="14386" id="pf135816373517679" referenceLink="//@navigationRule.0/@navigationCase.37/@toViewId|" inlinks="pf135816373517339" path="/closeBox.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="returnToArchive.xhtml" x="338" y="14770" id="pf135816373517680" referenceLink="//@navigationRule.0/@navigationCase.38/@toViewId|" inlinks="pf135816373517340" path="/returnToArchive.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="returnedToArchiveView.xhtml" x="338" y="15154" id="pf135816373517781" referenceLink="//@navigationRule.0/@navigationCase.39/@toViewId|" inlinks="pf135816373517341" path="/returnedToArchiveView.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="start.xhtml" id="pf135816373517782" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf135816373517342" path="/start.xhtml"/>
+  <links id="pf13581637351733" target="pf135816373517343" source="pf13581637351732" outcome="login" redirect="true"/>
+  <links id="pf13581637351734" target="pf135816373517344" source="pf13581637351732" outcome="imageviewer"/>
+  <links id="pf13581637351735" target="pf135816373517445" source="pf13581637351732" outcome="close" redirect="true"/>
+  <links id="pf13581637351736" target="pf135816373517446" source="pf13581637351732" outcome="closeandrefresh" redirect="true"/>
+  <links id="pf13581637351737" target="pf135816373517447" source="pf13581637351732" outcome="objects" redirect="true"/>
+  <links id="pf13581637351738" target="pf135816373517448" source="pf13581637351732" outcome="viewObject" redirect="true"/>
+  <links id="pf13581637351739" target="pf135816373517449" source="pf13581637351732" outcome="confirmReceivedObjects" redirect="true"/>
+  <links id="pf135816373517310" target="pf135816373517450" source="pf13581637351732" outcome="queues" redirect="true"/>
+  <links id="pf135816373517311" target="pf135816373517451" source="pf13581637351732" outcome="orders" redirect="true"/>
+  <links id="pf135816373517312" target="pf135816373517452" source="pf13581637351732" outcome="order" redirect="true"/>
+  <links id="pf135816373517313" target="pf135816373517453" source="pf13581637351732" outcome="order-addEdit" redirect="true"/>
+  <links id="pf135816373517314" target="pf135816373517454" source="pf13581637351732" outcome="reports" redirect="true"/>
+  <links id="pf135816373517315" target="pf135816373517455" source="pf13581637351732" outcome="edok" redirect="true"/>
+  <links id="pf135816373517316" target="pf135816373517456" source="pf13581637351732" outcome="management" redirect="true"/>
+  <links id="pf135816373517317" target="pf135816373517457" source="pf13581637351732" outcome="importFiles" redirect="true"/>
+  <links id="pf135816373517318" target="pf135816373517458" source="pf13581637351732" outcome="notification" redirect="true"/>
+  <links id="pf135816373517319" target="pf135816373517459" source="pf13581637351732" outcome="addEditNotification" redirect="true"/>
+  <links id="pf135816373517320" target="pf135816373517560" source="pf13581637351732" outcome="password" redirect="true"/>
+  <links id="pf135816373517321" target="pf135816373517561" source="pf13581637351732" outcome="viewImage" redirect="true"/>
+  <links id="pf135816373517322" target="pf135816373517562" source="pf13581637351732" outcome="extViewImage" redirect="true"/>
+  <links id="pf135816373517323" target="pf135816373517563" source="pf13581637351732" outcome="history" redirect="true"/>
+  <links id="pf135816373517324" target="pf135816373517564" source="pf13581637351732" outcome="history-admin" redirect="true"/>
+  <links id="pf135816373517325" target="pf135816373517565" source="pf13581637351732" outcome="accessoriesOrders" redirect="true"/>
+  <links id="pf135816373517326" target="pf135816373517566" source="pf13581637351732" outcome="orderAccessories" redirect="true"/>
+  <links id="pf135816373517327" target="pf135816373517567" source="pf13581637351732" outcome="administration" redirect="true"/>
+  <links id="pf135816373517328" target="pf135816373517568" source="pf13581637351732" outcome="editAdministrationItem" redirect="true"/>
+  <links id="pf135816373517329" target="pf135816373517569" source="pf13581637351732" outcome="addAdministrationItem" redirect="true"/>
+  <links id="pf135816373517330" target="pf135816373517670" source="pf13581637351732" outcome="products" redirect="true"/>
+  <links id="pf135816373517331" target="pf135816373517671" source="pf13581637351732" outcome="orderProduct" redirect="true"/>
+  <links id="pf135816373517332" target="pf135816373517672" source="pf13581637351732" outcome="editProduct" redirect="true"/>
+  <links id="pf135816373517333" target="pf135816373517673" source="pf13581637351732" outcome="addProductAddresses" redirect="true"/>
+  <links id="pf135816373517334" target="pf135816373517674" source="pf13581637351732" outcome="viewProductOrders" redirect="true"/>
+  <links id="pf135816373517335" target="pf135816373517675" source="pf13581637351732" outcome="destroyingObjectsReports" redirect="true"/>
+  <links id="pf135816373517336" target="pf135816373517676" source="pf13581637351732" outcome="editConfirmDestroyingObjectsReport" redirect="true"/>
+  <links id="pf135816373517337" target="pf135816373517677" source="pf13581637351732" outcome="prolongation" redirect="true"/>
+  <links id="pf135816373517338" target="pf135816373517678" source="pf13581637351732" outcome="viewProlongation" redirect="true"/>
+  <links id="pf135816373517339" target="pf135816373517679" source="pf13581637351732" outcome="closeBox" redirect="true"/>
+  <links id="pf135816373517340" target="pf135816373517680" source="pf13581637351732" outcome="returnToArchive" redirect="true"/>
+  <links id="pf135816373517341" target="pf135816373517781" source="pf13581637351732" outcome="returnedToArchiveView" redirect="true"/>
+  <links id="pf135816373517342" target="pf135816373517782" source="pf13581637351732" outcome="start" redirect="true"/>
+</pageflow:Pageflow>
