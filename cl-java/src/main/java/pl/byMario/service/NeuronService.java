@@ -48,7 +48,6 @@ public class NeuronService {
 //			wordDao.updateWordByNeuron(newNeuronI);
 		}
 		catch(Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
