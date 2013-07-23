@@ -18,7 +18,7 @@
 
 	<!-- Skanowanie wszystkich podpakietow z tego pakietu na obecność specyficznych
 		adnotacji frameworka -->
-	<context:component-scan base-package="pl.byMario" />
+	<context:component-scan base-package="pl" />
 	<context:annotation-config />
 	
 <aop:aspectj-autoproxy proxy-target-class="true" />
