@@ -22,18 +22,17 @@ package pl.byMario;
  */
 
 import java.io.EOFException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,7 +40,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
-import org.armedbear.lisp.Java;
 import org.jatha.Jatha;
 import org.jatha.dynatype.LispValue;
 import org.jatha.read.LispParser;
@@ -49,7 +47,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.byMario.service.NeuralNetService;
 import pl.byMario.service.UserCommunicationService;
-import pl.byMario.service.WordReaderService;
 import pl.byMario.service.WordWriterService;
 
 public class Main {
@@ -70,22 +67,44 @@ public class Main {
 	 */
 	public static void main(String[] argv) {
 
-		// processNetTest();
-//		checkLoopBreak();
-//		ListContainsCheck();
-		
-		startNet();
-		
+		parseDate();
+//		getWordsFromString("so322word95");
+		// stringTest();
+//		 processNetTest();
+		// checkLoopBreak();
+		// ListContainsCheck();
+		// checkMapInsertion();
+		// startNet();
+//		 processNet();
+		// Double d = 45.00;
+		// Double d1 = sigmoidal(d);
+		// Double d2 = sigmoidalDerivative(d);
+		// System.out.println(d1);
+		// System.out.println(d2);
 
-		String operToUpdate = "";
+		// checkListImpl();
 
-		System.out.println(operToUpdate.isEmpty());
-		// List<Long> removeTest = new ArrayList<Long>();
-		// removeTest.add(1L);
+		// String operToUpdate = "";
+
+		// System.out.println(operToUpdate.isEmpty());
+		// List<Integer> removeTest = new ArrayList<Integer>();
+		// removeTest.add(new Integer(10));
+
+		// Integer i1 = new Integer(5);
+		// Integer i2 = new Integer(10);
+		//
+		// if (removeTest.contains(i1)){
+		// System.out.println("i1");
+		// }
+		//
+		// if (removeTest.contains(i2)){
+		// System.out.println("i2");
+		// }
+
 		// removeTest.add(2L);
 		// removeTest.add(3L);
 		// removeTest.add(4L);
-		//
+
 		// Long removed = removeTest.remove(0);
 
 		// String sentence = "";
@@ -195,6 +214,159 @@ public class Main {
 			t.printStackTrace();
 		}
 
+		System.out.println("koniec MAIN");
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void parseDate() {
+		// TODO Auto-generated method stub
+		Long dateLong = new Date().getTime();
+		Integer dateInt =(int) new Date().getTime();
+		
+		System.out.println();
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 * @param string
+	 */
+	private static void getWordsFromString(String sSentence) {
+
+		List<String> stringsToCheck = new ArrayList<String>();
+		List<String> wordsToCheckInDB = new ArrayList<String>();
+
+		Pattern characterPattern = Pattern.compile("[a-zA-Z]+");
+
+		String password = "12KuDupaKk";
+
+		StringBuilder pwCharsOnly = new StringBuilder();
+
+		// Strip out all characters except A-Z and remove capitalization.
+		Matcher matcher = characterPattern.matcher(password.toLowerCase());
+		while(matcher.find()) {
+			String group = matcher.group();
+			if(group.length() >= 4) {
+				stringsToCheck.add(group);
+			}
+
+			pwCharsOnly.append(matcher.group());
+		}
+		System.out.println(pwCharsOnly);
+
+		Integer liczbaPodslow = 0;
+
+		for(String string : stringsToCheck) {
+
+			int pwLength = string.length();
+			int strWidth = 4;
+			int position = 0;
+			String compareStr = null;
+			while(strWidth < pwLength) {
+
+				position = 0;
+				while((position + strWidth) <= pwLength) {
+
+					compareStr = string.substring(position, (position + strWidth));
+					wordsToCheckInDB.add(compareStr);
+					liczbaPodslow++;
+
+					position++;
+				}
+
+				// Increase the width of the word now
+				strWidth++;
+			}
+		}
+
+		System.err.println("Liczba stringow do sprawdzenia: " + liczbaPodslow + " przy dlugosci hasla=" + password.length());
+
+		// String sSentence = "The quick brown fox jumped over the lazy dog.";
+		// Pattern p = Pattern.compile("\\d+");
+		// String[] result = p.split(sSentence);
+		// System.out.println(sSentence);
+
+		StringBuilder queryBuilder = new StringBuilder();
+		queryBuilder.append("(");
+		for(String string : wordsToCheckInDB) {
+			queryBuilder.append("'" + string + "', ");
+		}
+
+		queryBuilder.replace(queryBuilder.length() - 2, queryBuilder.length(), "");
+
+		queryBuilder.append(")");
+
+		queryBuilder.toString();
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * checking null value into string
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void stringTest() {
+
+		Object ob = null;
+
+		ob = "kuku";
+
+		System.out.println(ob);
+		System.out.println(String.valueOf(ob));
+		System.out.println(ob.toString());
+
+	}
+
+	/**
+	 * sprawdza roznice pomiedzy ArrayList a LinkedList
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void checkListImpl() {
+
+		List<Integer> aL = new ArrayList<Integer>();
+		List<Integer> lL = new LinkedList<Integer>();
+
+		for(int i = 0; i < 5; i++) {
+			aL.add(i);
+			lL.add(i);
+		}
+		aL.add(9);
+		lL.add(9);
+
+		aL.add(9);
+		lL.add(9);
+
+		aL.add(10);
+		lL.add(10);
+
+		aL.remove(5);
+		lL.remove(5);
+
+		aL.add(11);
+		lL.add(11);
+
+		for(Iterator iterator = aL.iterator(); iterator.hasNext();) {
+			Integer integer = (Integer)iterator.next();
+			// if(integer.equals(4)){
+			// iterator.remove();
+			// }
+			// iterator.
+
+		}
+
+		for(Iterator iterator = lL.iterator(); iterator.hasNext();) {
+			Integer integer = (Integer)iterator.next();
+			if(integer.equals(4)) {
+				integer = new Integer(999);
+				iterator.remove();
+
+			}
+		}
 	}
 
 	/**
@@ -204,13 +376,13 @@ public class Main {
 	private static void startNet() {
 
 		String sentence = "rozpoczynam start sieci";
-		
+
 		NeuralNetService net = new NeuralNetService();
-		
+
 		net.initNet();
-		
+
 		net.processFinal(sentence);
-		
+
 	}
 
 	public static void processNetTest() {
@@ -362,7 +534,7 @@ public class Main {
 		}
 	}
 
-	public static void testMap() {
+	public static void testList() {
 
 		List<Integer> intList = new ArrayList<Integer>();
 		Set<Integer> intSet = new HashSet<Integer>();
@@ -405,10 +577,554 @@ public class Main {
 
 		Integer integerToCheck = new Integer(6);
 		int intToCheck = 4;
-		
 
 		System.out.println(intList.contains(integerToCheck));
 		System.out.println(intList.contains(intToCheck));
+
+	}
+
+	public static void checkMapInsertion() {
+
+		// check if when put same key with different value replaces record
+		Map<Integer, String> testMap = new HashMap<Integer, String>();
+
+		testMap.put(1, "one");
+		testMap.put(2, "two");
+		testMap.put(3, null);
+
+		testMap.put(1, null);
+		testMap.put(3, "three");
+
+		System.out.println(testMap.get(1));
+		System.out.println(testMap.get(2));
+		System.out.println(testMap.get(3));
+		System.out.println(testMap.get(4));
+
+	}
+
+	// for XOR
+
+	// I I | O
+	// ----+--
+	// 0 0 | 0
+	// 0 1 | 1
+	// 1 0 | 1
+	// 1 1 | 0
+
+	static int inputNeuronsCount = 2;
+	static int hiddenNeuronsCount = 3;
+	static int outputNeuronsCount = 1;
+
+	static Double momentum = 0.5;
+	static Double E = 0.9; // learning rate
+
+	static Double posStep = 1.2;
+	static Double negStep = 0.5;
+	static Double updateValueMax = 50d;
+	static Double updateValueMin = 0.000001;
+
+	// array: [node number][inputValues*weights sum, outputValue, nodeDelta]
+	public static Double[][] inputNodes = new Double[inputNeuronsCount + 1][3]; // properties
+																				// of
+																				// input
+																				// layer
+																				// nodes
+	public static Double[][] hiddenNodes = new Double[hiddenNeuronsCount + 1][3]; // properties
+																					// of
+																					// hidden
+																					// layer
+																					// nodes
+	public static Double[][] outputNodes = new Double[outputNeuronsCount][3]; // properties
+																				// of
+																				// output
+																				// layer
+																				// nodes
+
+	public static Double[] idealOutput = new Double[outputNodes.length];
+
+	// array: [2nd layer node number][1st layer node number - input
+	// from][weight, gradient, weightDelta, updateValue]
+	static Double[][][] hiddenWeights = new Double[hiddenNodes.length][inputNodes.length][4]; // connections
+																								// properties
+																								// from
+																								// input
+																								// to
+																								// hidden
+																								// layer
+	static Double[][][] outputWeights = new Double[outputNodes.length][hiddenNodes.length][4]; // connections
+																								// properties
+																								// from
+																								// hidden
+																								// to
+																								// output
+																								// layer
+
+	static void setInputValues() {
+		// +1 - bias
+		System.out.println("INPUT");
+		for(int i = 0; i < inputNodes.length - 1; i++) {
+			// inputNodes[i][0] = null;
+			inputNodes[i][1] = getRandomBit().doubleValue();
+			// inputNodes[i][1] = 1d;
+			System.out.println("neuron " + (i + 1) + " out value: " + inputNodes[i][1]);
+		}
+		// bias always has value = 1
+		// inputNodes[inputNeuronsCount][0] = 1d;
+		inputNodes[inputNeuronsCount][1] = 1d;
+		System.out.println("BIAS " + inputNodes[inputNeuronsCount][1]);
+
+		idealOutput[0] = Double.parseDouble(String.valueOf(inputNodes[0][1].intValue() ^ inputNodes[1][1].intValue()));
+		System.out.println("IDEAL: " + idealOutput[0]);
+	}
+
+	public static void processNet() {
+
+		// init();
+		setInputValues();
+
+		Integer iteration = 0;
+
+		Double output;
+		System.out.println("************************");
+		System.out.println("backProp");
+		System.out.println("************************");
+		
+		do {
+			iteration++;
+			System.out.println("Iteration " + iteration);
+			output = iterate();
+
+			// if(iteration > 10) break;
+		}
+		while(checkErrorGradientMomentum());
+
+//		System.out.println("Iterations " + iteration);
+//		System.out.println(outputNodes[0][1].toString());
+
+		System.out.println("Iterations TOTAL " + iteration);
+		System.out.println("RESULT: " + outputNodes[0][1].toString());
+
+//		for(int i = 0; i < inputNodes.length - 1; i++) {
+//			System.out.println("neuron " + (i + 1) + " out value: " + inputNodes[i][1]);
+//		}
+
+	}
+
+	public static Double iterate() {
+
+		// setInputValues();
+
+//		 System.out.println("iterate");
+		processLayer(inputNodes, hiddenWeights, hiddenNodes);
+		hiddenNodes[hiddenNeuronsCount][1] = 1d;
+
+		// System.out.println("OUTPUT");
+		processLayer(hiddenNodes, outputWeights, outputNodes);
+		System.out.println("OUT: " + outputNodes[0][1]);
+
+		// for(Double outputValue : outputNodes[0][1]) {
+		// System.out.println(outputNodes[0][1].toString());
+		// }
+
+		return outputNodes[0][1];
+	}
+
+	public static void processLayer(Double[][] layerFrom, Double[][][] connectionProp, Double[][] layerTo) {
+		// public static Double[] processLayer(Double[][] weights, Double[]
+		// values) {
+
+		// Double[][] tempOutputValues = new Double[weights.length];
+
+		for(int i = 0; i < layerTo.length; i++) {
+
+			Double sum = 0d;
+
+			for(int j = 0; j < layerFrom.length; j++) {
+
+				if(connectionProp[i][j][0] == null) {
+					// initial weight setup
+					connectionProp[i][j][0] = getRandomDouble();
+				}
+				//
+				// if(connectionProp[i][j][0].isNaN()){
+				// System.out.println();
+				// }
+				sum += connectionProp[i][j][0] * layerFrom[j][1];
+			}
+
+			layerTo[i][0] = sum;
+			layerTo[i][1] = sigmoidal(sum);
+			if(layerTo[i][1].isNaN()) {
+				// System.out.println("neuron " + (i + 1) + " out value: " +
+				// sum);
+			}
+		}
+
+		return;
+
+	}
+
+	public static boolean checkErrorGradientCalculation() {
+
+		int idealOutputInt = inputNodes[0][1].intValue() ^ inputNodes[1][1].intValue();
+
+		Double idealOutput = Double.parseDouble(String.valueOf(idealOutputInt));
+
+		Double error = outputNodes[0][1] - idealOutput;
+		System.out.println("ERR: " + error);
+		if(Math.abs(error) > 0.002) {
+
+			gradientCalculation(error);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public static boolean checkErrorGradientMomentum() {
+
+		// Double idealOutput =
+		// Double.parseDouble(String.valueOf(idealOutputInt));
+		Double temp = 0d;
+
+		// for(int i = 0; i < outputNodes.length; i++) {
+		// temp += Math.pow(outputNodes[i][1] - idealOutput[i], 2);
+		// }
+		System.out.println("checking gradient");
+		
+
+		// Double error = temp/outputNodes.length;
+		Double error = outputNodes[0][1] - idealOutput[0];
+		System.out.println("ERR: " + error);
+
+		if(Math.abs(error) > 0.002) {
+			// System.out.println("ERR: "+error);
+			gradientCalculation(error);
+
+			// gradientMomentum(error);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void gradientCalculation(Double error) {
+
+		// nodeDelta for output
+		for(Double[] outputNode : outputNodes) {
+			if(outputNode[0] != null) {
+				outputNode[2] = (error) * (sigmoidalDerivative(outputNode[0]));
+				// if(outputNode[2]==null){
+				// System.out.println(outputNode[2]);
+				// }
+			}
+		}
+
+		// nodeDelta for hidden
+		// for(Double[] hiddenNode : hiddenNodes) {
+		for(int i = 0; i < hiddenNodes.length; i++) {
+
+			if(hiddenNodes[i][0] != null) {
+
+				// sum of weights between this H and O's
+				Double weightsTimesNodeDeltaSum = 0d;
+				for(int j = 0; j < outputNodes.length; j++) {
+
+					if(outputNodes[j][2] != null) {
+						weightsTimesNodeDeltaSum += outputWeights[j][i][0] * outputNodes[j][2];
+					}
+				}
+
+				hiddenNodes[i][2] = sigmoidalDerivative(hiddenNodes[i][0]) * weightsTimesNodeDeltaSum;
+			}
+		}
+
+		// gradient and weight
+		for(int i = 0; i < outputWeights.length; i++) {
+
+			for(int j = 0; j < hiddenNodes.length; j++) {
+
+				Double prevGradient = outputWeights[i][j][1];
+
+				if(prevGradient == null) {
+					prevGradient = 0d;
+				}
+
+				outputWeights[i][j][1] = hiddenNodes[j][1] * outputNodes[i][2];
+//				System.out.println(outputWeights[i][j][1]);
+
+				if(outputWeights[i][j][2] == null) {
+					outputWeights[i][j][2] = 0d;
+				}
+				if(outputWeights[i][j][3] == null) {
+					outputWeights[i][j][3] = 0.05;
+				}
+
+				Double tempOldWeightDelta = outputWeights[i][j][2];
+
+				// new weightDelta
+				// System.out.println("GR "+outputWeights[i][j][1]);
+
+				// gradient descent
+				// outputWeights[i][j][2] = (-E * outputWeights[i][j][1]);
+
+				// momentum
+				// outputWeights[i][j][2] = (-E * outputWeights[i][j][1]) +
+				// momentum * tempOldWeightDelta;
+				// outputWeights[i][j][0] += outputWeights[i][j][2];
+
+				// RPROP
+				rProp(prevGradient, outputWeights[i][j]);
+
+				// if((prevGradient * outputWeights[i][j][1]) > 0) {
+				//
+				// outputWeights[i][j][3] = posStep * outputWeights[i][j][3];
+				//
+				// if(outputWeights[i][j][3] > updateValueMax) {
+				// outputWeights[i][j][3] = updateValueMax;
+				// }
+				//
+				// outputWeights[i][j][2] = -sign(outputWeights[i][j][1]) *
+				// outputWeights[i][j][3];
+				// outputWeights[i][j][0] += outputWeights[i][j][2];
+				//
+				// }
+				// else if((prevGradient * outputWeights[i][j][1]) < 0) {
+				//
+				// outputWeights[i][j][3] = negStep * outputWeights[i][j][3];
+				//
+				// if(outputWeights[i][j][3] < updateValueMin) {
+				// outputWeights[i][j][3] = updateValueMin;
+				// }
+				//
+				// outputWeights[i][j][1] = 0d;
+				//
+				// }
+				// else {
+				// outputWeights[i][j][2] = -sign(outputWeights[i][j][1]) *
+				// outputWeights[i][j][3];
+				// outputWeights[i][j][0] += outputWeights[i][j][2];
+				// }
+			}
+		}
+
+		for(int i = 0; i < hiddenWeights.length - 1; i++) {
+
+			for(int j = 0; j < inputNodes.length; j++) {
+
+				Double prevGradient = hiddenWeights[i][j][1];
+
+				if(prevGradient == null) {
+					prevGradient = 0d;
+				}
+
+				// if(inputNodes[i][2] != null) {
+				hiddenWeights[i][j][1] = inputNodes[j][1] * hiddenNodes[i][2];
+				// System.out.println(hiddenWeights[i][j][1]);
+				// }
+				// if(hiddenWeights[i][j][1].isNaN()){
+				// System.err.println();
+				// }
+
+				if(hiddenWeights[i][j][2] == null) {
+					hiddenWeights[i][j][2] = 0d;
+				}
+				if(hiddenWeights[i][j][3] == null) {
+					hiddenWeights[i][j][3] = 0.05;
+				}
+
+				Double tempOldWeightDelta = hiddenWeights[i][j][2];
+
+				// new weightDelta
+				// hiddenWeights[i][j][2] = (E * hiddenWeights[i][j][1]);
+
+				// gradient descent
+				// outputWeights[i][j][2] = (-E * outputWeights[i][j][1]);
+
+				// momentum
+				// hiddenWeights[i][j][2] = (E * hiddenWeights[i][j][1]) +
+				// momentum * tempOldWeightDelta;
+				// new weight
+				// hiddenWeights[i][j][0] += hiddenWeights[i][j][2];
+
+				// RPROP
+				rProp(prevGradient, hiddenWeights[i][j]);
+
+			}
+		}
+
+	}
+
+	private static void rProp(Double prevGradient, Double[] nauronWeights) {
+
+		if((prevGradient * nauronWeights[1]) > 0) {
+
+			nauronWeights[3] = posStep * nauronWeights[3];
+
+			if(nauronWeights[3] > updateValueMax) {
+				nauronWeights[3] = updateValueMax;
+			}
+
+			nauronWeights[2] = -sign(nauronWeights[1]) * nauronWeights[3];
+			nauronWeights[0] += nauronWeights[2];
+
+		}
+		else if((prevGradient * nauronWeights[1]) < 0) {
+
+			nauronWeights[3] = negStep * nauronWeights[3];
+
+			if(nauronWeights[3] < updateValueMin) {
+				nauronWeights[3] = updateValueMin;
+			}
+
+			nauronWeights[1] = 0d;
+
+		}
+		else {
+			nauronWeights[2] = -sign(nauronWeights[1]) * nauronWeights[3];
+			nauronWeights[0] += nauronWeights[2];
+		}
+	}
+
+	private static Double sign(Double x) {
+
+		if(x > 0) {
+			return 1d;
+		}
+		else if(x < 0) {
+			return -1d;
+		}
+		else {
+			return 0d;
+		}
+
+	}
+
+	private static void rProp(Double error) {
+
+		// nodeDelta for output
+		for(Double[] outputNode : outputNodes) {
+			if(outputNode[0] != null) {
+				outputNode[2] = (error) * (sigmoidalDerivative(outputNode[0]));
+				// if(outputNode[2]==null){
+				// System.out.println(outputNode[2]);
+				// }
+			}
+		}
+
+		// nodeDelta for hidden
+		// for(Double[] hiddenNode : hiddenNodes) {
+		for(int i = 0; i < hiddenNodes.length; i++) {
+
+			if(hiddenNodes[i][0] != null) {
+
+				// sum of weights between this H and O's
+				Double weightsTimesNodeDeltaSum = 0d;
+				for(int j = 0; j < outputNodes.length; j++) {
+
+					if(outputNodes[j][2] != null) {
+						weightsTimesNodeDeltaSum += outputWeights[j][i][0] * outputNodes[j][2];
+					}
+				}
+
+				hiddenNodes[i][2] = sigmoidalDerivative(hiddenNodes[i][0]) * weightsTimesNodeDeltaSum;
+			}
+		}
+
+		// gradient and weight
+		for(int i = 0; i < outputWeights.length; i++) {
+
+			for(int j = 0; j < hiddenNodes.length; j++) {
+
+				// if(outputNodes[i][2] != null) {
+				outputWeights[i][j][1] = hiddenNodes[j][1] * outputNodes[i][2];
+				// }
+
+				if(outputWeights[i][j][2] == null) {
+					outputWeights[i][j][2] = 0d;
+				}
+
+				Double tempOldWeightDelta = outputWeights[i][j][2];
+				// new weightDelta
+				outputWeights[i][j][2] = (E * outputWeights[i][j][1]) + momentum * tempOldWeightDelta;
+				// new weight
+				outputWeights[i][j][0] += outputWeights[i][j][2];
+
+			}
+		}
+
+		for(int i = 0; i < hiddenWeights.length - 1; i++) {
+
+			for(int j = 0; j < inputNodes.length; j++) {
+				// if(inputNodes[i][2] != null) {
+				hiddenWeights[i][j][1] = inputNodes[j][1] * hiddenNodes[i][2];
+				// }
+				// if(hiddenWeights[i][j][1].isNaN()){
+				// System.err.println();
+				// }
+
+				if(hiddenWeights[i][j][2] == null) {
+					hiddenWeights[i][j][2] = 0d;
+				}
+
+				Double tempOldWeightDelta = hiddenWeights[i][j][2];
+				// new weightDelta
+				hiddenWeights[i][j][2] = (E * hiddenWeights[i][j][1]) + momentum * tempOldWeightDelta;
+				// new weight
+				hiddenWeights[i][j][0] += hiddenWeights[i][j][2];
+
+			}
+		}
+
+	}
+
+	public static Double sigmoidal(Double x) {
+
+		// sigmoidal function
+		return 1 / (1 + Math.pow(Math.E, -(x)));
+	}
+
+	public static Double sigmoidalDerivative(Double x) {
+		Double temp = (sigmoidal(x) * (1 - sigmoidal(x)));
+
+		if(temp.isInfinite() || temp.isNaN()) {
+			System.err.println("kuku");
+			temp = Double.MAX_VALUE;
+		}
+
+		// System.out.println("SD: "+temp);
+		return temp;
+	}
+
+	private static Double getRandomDouble() {
+
+		// devided by 10 because we need as small weight as possible
+		return (Math.random() - 0.5) / 10;
+
+	}
+
+	private static Integer getRandomBit() {
+
+		if(Math.random() < 0.5) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+
+	}
+
+	public static void init() {
+
+		// inputNodes = new Double[inputNeuronsCount + 1];
+		// hiddenValues = new Double[hiddenNeuronsCount + 1];
+		// outputValues = new Double[outputNeuronsCount];
 
 	}
 
