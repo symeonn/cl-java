@@ -1,27 +1,10 @@
 package pl.byMario;
 
-/*
- * Main.java
- *
- * Copyright (C) 2008 Ville Voutilainen
- * $Id: Main.java 12307 2009-12-25 21:54:31Z ehuelsmann $
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- */
-
 import java.io.EOFException;
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -56,26 +39,25 @@ public class Main {
 
 	private static final Logger LOGGER = Logger.getLogger(Main.class);
 
-	/**
-	 * This example creates an Interpreter instance, loads our lisp code from a
-	 * file and then looks up a function defined in the loaded lisp file and
-	 * executes the function.
-	 * 
-	 * The function takes a single parameter and invokes a java method on the
-	 * object provided. We provide our Main object as the parameter.
-	 * 
-	 */
 	public static void main(String[] argv) {
-
-		parseDate();
-//		getWordsFromString("so322word95");
+		
+		compoundCheck();
+//		forLoopCheck();
+//		switchTest();
+//		checkMassiveFunc();
+		// jatha();
+		// checkSysProps();
+		// regExpCheck();
+		// checkArrays();
+		// parseDate();
+		// getWordsFromString("so322word95");
 		// stringTest();
-//		 processNetTest();
+		// processNetTest();
 		// checkLoopBreak();
 		// ListContainsCheck();
 		// checkMapInsertion();
 		// startNet();
-//		 processNet();
+		// processNet();
 		// Double d = 45.00;
 		// Double d1 = sigmoidal(d);
 		// Double d2 = sigmoidalDerivative(d);
@@ -221,11 +203,174 @@ public class Main {
 	 * 
 	 * @author Mariusz Lewandowski; byMario
 	 */
+	private static void compoundCheck() {
+
+
+		int a=10;
+		System.out.print(a + ": ");
+		System.out.println(a%=3);
+		
+		a=4;
+		System.out.print(a + ": ");
+		System.out.println(a&=2);
+		
+		a=4;
+		System.out.print(a + ": ");
+		System.out.println(a^=2);
+		
+		a=4;
+		System.out.print(a + ": ");
+		System.out.println(a|=2);
+		
+		a=4;
+		System.out.print(a + ": ");
+		System.out.println(a<<=2);
+		
+		a=3;
+		System.out.print(a + ": ");
+		System.out.println(a>>=2);
+		
+		a=3;
+		System.out.print(a + ": ");
+		System.out.println(a>>>=2);
+		
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void forLoopCheck() {
+		int i = 0;
+		for(i = 0; i < 5; i++) {
+			System.out.println(i);
+		}
+		System.out.println(i);
+		i=0;
+		for(i = 0; i < 5; ++i) {
+			System.out.println(i);
+		}
+		System.out.println(i);
+		
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void switchTest() {
+		
+		int i = 3;
+		
+		switch(i) {
+		case 1:
+			System.out.println("case 1");	
+			System.out.println(i);	
+//			break;
+		case 2:
+			System.out.println("case 2");	
+			System.out.println(i);	
+		case 3:
+			System.out.println("case 3");	
+			System.out.println(i);	
+		case 4:
+			System.out.println("case 4");	
+			System.out.println(i);	
+			break;
+		case 5:
+			System.out.println("case 5");	
+			System.out.println(i);	
+		default:
+			System.out.println("default");	
+			System.out.println(i);	
+//			break;
+		}
+		
+		
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void checkMassiveFunc() {
+//		int it = 100;
+		BigDecimal it = new BigDecimal(1000);
+		BigDecimal sum = new BigDecimal(1);
+		for(BigDecimal x = new BigDecimal(0); x.compareTo(it) < 0; x = x.add(new BigDecimal(1))) {
+			sum = sum.multiply(new BigDecimal(1).add(x));
+		}
+System.out.println(sum);
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void checkSysProps() {
+
+		OperatingSystemMXBean odXb = ManagementFactory.getOperatingSystemMXBean();
+
+		System.out.println(odXb.getAvailableProcessors());
+		System.out.println(odXb.getArch());
+		System.out.println(odXb.getName());
+		System.out.println(odXb.getSystemLoadAverage());
+		System.out.println(odXb.getVersion());
+		System.out.println();
+
+		System.out.println(Runtime.getRuntime().availableProcessors());
+		System.out.println(Runtime.getRuntime().freeMemory());
+		System.out.println(Runtime.getRuntime().maxMemory());
+		System.out.println(Runtime.getRuntime().totalMemory());
+
+		// RuntimeMXBean mml = ManagementFactory.getRuntimeMXBean();
+		// System.out.println(mml.getName());
+		//
+		// for(MemoryPoolMXBean memoryManagerMXBean : mml) {
+		// System.out.println(memoryManagerMXBean.getName());
+		// }
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
+	private static void checkArrays() {
+
+		int[][] testArray;
+
+		testArray = new int[2][];
+
+		for(int i = 0; i < testArray.length; i++) {
+
+			if(i == 0) {
+
+				testArray[i] = new int[4];
+			}
+			else {
+				testArray[i] = new int[9];
+
+			}
+
+		}
+
+		System.out.println(testArray.length);
+		for(int[] is : testArray) {
+			System.out.println(is.length);
+
+		}
+
+	}
+
+	/**
+	 * 
+	 * @author Mariusz Lewandowski; byMario
+	 */
 	private static void parseDate() {
 		// TODO Auto-generated method stub
 		Long dateLong = new Date().getTime();
-		Integer dateInt =(int) new Date().getTime();
-		
+		Integer dateInt = (int)new Date().getTime();
+
 		System.out.println();
 	}
 
@@ -417,30 +562,36 @@ public class Main {
 		return a + b;
 	}
 
-	public void jatha() throws EOFException {
+	public static void jatha() {
+		try {
 
-		Jatha lisp = new Jatha(false, false);
-		lisp.init();
-		lisp.start();
-		System.out.println(lisp.findPackage("CL-USER"));
-		System.out.println(lisp.allPackages());
-		LispValue symbol1 = lisp.parse("FOO", LispParser.PRESERVE);
+			Jatha lisp = new Jatha(false, false);
+			lisp.init();
+			lisp.start();
+			System.out.println(lisp.findPackage("CL-USER"));
+			System.out.println(lisp.allPackages());
+			LispValue symbol1 = lisp.parse("FOO", LispParser.PRESERVE);
 
-		LispValue foo1 = lisp.makeInteger(7);
+			LispValue foo1 = lisp.makeInteger(7);
 
-		// String input = "(* 5 10)";
-		// LispValue result = myLisp.eval(input);
-		// System.out.println(input + " = " + result);
-		// System.out.println(myLisp.eval("(let ((x 7)) (* 5 x)))"));
-		// System.out.println(myLisp.eval("(progn (setq x 7) (* 5 x))"));
-		System.out.println(lisp.eval("(setq x 7)"));
-		System.out.println(lisp.eval("(* 5 x)"));
+			// String input = "(* 5 10)";
+			// LispValue result = myLisp.eval(input);
+			// System.out.println(input + " = " + result);
+			// System.out.println(myLisp.eval("(let ((x 7)) (* 5 x)))"));
+			// System.out.println(myLisp.eval("(progn (setq x 7) (* 5 x))"));
+			System.out.println(lisp.eval("(setq x 7)"));
+			System.out.println(lisp.eval("(* 5 x)"));
 
-		LispValue file = lisp.makeString("D:\\Dropbox\\LISP\\sentenceGenerator.lisp");
-		LispValue rez1 = lisp.load(file);
+			LispValue file = lisp.makeString("D:\\Dropbox\\LISP\\sentenceGenerator.lisp");
+			LispValue rez1 = lisp.load(file);
 
-		System.out.println(rez1.toString());
+			System.out.println(rez1.toString());
 
+		}
+		catch(EOFException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static void mySqlTest() {
@@ -494,13 +645,13 @@ public class Main {
 		return LOGGER;
 	}
 
-	public static void regCheck() {
+	public static void regExpCheck() {
 
-		String zdanie = "Nr umowy 4986S";
+		String zdanie = "Qwert!@#$";
 		String zdanie1 = "Nr umowy 49866";
 		String zdanie2 = "Nr umowy: 64879";
 
-		String patternString = "Nr umowy[ \\t:]*([\\w\\-]+|[\\d]{5}|[\\d]{1,4}[A-Z]{1,3})";
+		String patternString = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!\"#$%&]).*)";
 		Pattern pat = Pattern.compile(patternString);
 
 		Matcher m = pat.matcher(zdanie);
@@ -679,6 +830,11 @@ public class Main {
 
 	public static void processNet() {
 
+		// THIS IS OLD VERSION OF MY NETWORK
+		// IT HAS BUGS, BUT TOTALLY DIFFERENT APPROACH
+
+		// DO NOT DELETE THIS WHOLE PROCESS
+
 		// init();
 		setInputValues();
 
@@ -688,7 +844,7 @@ public class Main {
 		System.out.println("************************");
 		System.out.println("backProp");
 		System.out.println("************************");
-		
+
 		do {
 			iteration++;
 			System.out.println("Iteration " + iteration);
@@ -698,15 +854,16 @@ public class Main {
 		}
 		while(checkErrorGradientMomentum());
 
-//		System.out.println("Iterations " + iteration);
-//		System.out.println(outputNodes[0][1].toString());
+		// System.out.println("Iterations " + iteration);
+		// System.out.println(outputNodes[0][1].toString());
 
 		System.out.println("Iterations TOTAL " + iteration);
 		System.out.println("RESULT: " + outputNodes[0][1].toString());
 
-//		for(int i = 0; i < inputNodes.length - 1; i++) {
-//			System.out.println("neuron " + (i + 1) + " out value: " + inputNodes[i][1]);
-//		}
+		// for(int i = 0; i < inputNodes.length - 1; i++) {
+		// System.out.println("neuron " + (i + 1) + " out value: " +
+		// inputNodes[i][1]);
+		// }
 
 	}
 
@@ -714,7 +871,7 @@ public class Main {
 
 		// setInputValues();
 
-//		 System.out.println("iterate");
+		// System.out.println("iterate");
 		processLayer(inputNodes, hiddenWeights, hiddenNodes);
 		hiddenNodes[hiddenNeuronsCount][1] = 1d;
 
@@ -792,7 +949,6 @@ public class Main {
 		// temp += Math.pow(outputNodes[i][1] - idealOutput[i], 2);
 		// }
 		System.out.println("checking gradient");
-		
 
 		// Double error = temp/outputNodes.length;
 		Double error = outputNodes[0][1] - idealOutput[0];
@@ -857,7 +1013,7 @@ public class Main {
 				}
 
 				outputWeights[i][j][1] = hiddenNodes[j][1] * outputNodes[i][2];
-//				System.out.println(outputWeights[i][j][1]);
+				// System.out.println(outputWeights[i][j][1]);
 
 				if(outputWeights[i][j][2] == null) {
 					outputWeights[i][j][2] = 0d;
@@ -877,87 +1033,60 @@ public class Main {
 				// momentum
 				// outputWeights[i][j][2] = (-E * outputWeights[i][j][1]) +
 				// momentum * tempOldWeightDelta;
+
 				// outputWeights[i][j][0] += outputWeights[i][j][2];
 
 				// RPROP
 				rProp(prevGradient, outputWeights[i][j]);
 
-				// if((prevGradient * outputWeights[i][j][1]) > 0) {
-				//
-				// outputWeights[i][j][3] = posStep * outputWeights[i][j][3];
-				//
-				// if(outputWeights[i][j][3] > updateValueMax) {
-				// outputWeights[i][j][3] = updateValueMax;
-				// }
-				//
-				// outputWeights[i][j][2] = -sign(outputWeights[i][j][1]) *
-				// outputWeights[i][j][3];
-				// outputWeights[i][j][0] += outputWeights[i][j][2];
-				//
-				// }
-				// else if((prevGradient * outputWeights[i][j][1]) < 0) {
-				//
-				// outputWeights[i][j][3] = negStep * outputWeights[i][j][3];
-				//
-				// if(outputWeights[i][j][3] < updateValueMin) {
-				// outputWeights[i][j][3] = updateValueMin;
-				// }
-				//
-				// outputWeights[i][j][1] = 0d;
-				//
-				// }
-				// else {
-				// outputWeights[i][j][2] = -sign(outputWeights[i][j][1]) *
-				// outputWeights[i][j][3];
-				// outputWeights[i][j][0] += outputWeights[i][j][2];
-				// }
 			}
 		}
 
-		for(int i = 0; i < hiddenWeights.length - 1; i++) {
-
-			for(int j = 0; j < inputNodes.length; j++) {
-
-				Double prevGradient = hiddenWeights[i][j][1];
-
-				if(prevGradient == null) {
-					prevGradient = 0d;
-				}
-
-				// if(inputNodes[i][2] != null) {
-				hiddenWeights[i][j][1] = inputNodes[j][1] * hiddenNodes[i][2];
-				// System.out.println(hiddenWeights[i][j][1]);
-				// }
-				// if(hiddenWeights[i][j][1].isNaN()){
-				// System.err.println();
-				// }
-
-				if(hiddenWeights[i][j][2] == null) {
-					hiddenWeights[i][j][2] = 0d;
-				}
-				if(hiddenWeights[i][j][3] == null) {
-					hiddenWeights[i][j][3] = 0.05;
-				}
-
-				Double tempOldWeightDelta = hiddenWeights[i][j][2];
-
-				// new weightDelta
-				// hiddenWeights[i][j][2] = (E * hiddenWeights[i][j][1]);
-
-				// gradient descent
-				// outputWeights[i][j][2] = (-E * outputWeights[i][j][1]);
-
-				// momentum
-				// hiddenWeights[i][j][2] = (E * hiddenWeights[i][j][1]) +
-				// momentum * tempOldWeightDelta;
-				// new weight
-				// hiddenWeights[i][j][0] += hiddenWeights[i][j][2];
-
-				// RPROP
-				rProp(prevGradient, hiddenWeights[i][j]);
-
-			}
-		}
+		// for(int i = 0; i < hiddenWeights.length - 1; i++) {
+		//
+		// for(int j = 0; j < inputNodes.length; j++) {
+		//
+		// Double prevGradient = hiddenWeights[i][j][1];
+		//
+		// if(prevGradient == null) {
+		// prevGradient = 0d;
+		// }
+		//
+		// // if(inputNodes[i][2] != null) {
+		// hiddenWeights[i][j][1] = inputNodes[j][1] * hiddenNodes[i][2];
+		// // System.out.println(hiddenWeights[i][j][1]);
+		// // }
+		// // if(hiddenWeights[i][j][1].isNaN()){
+		// // System.err.println();
+		// // }
+		//
+		// if(hiddenWeights[i][j][2] == null) {
+		// hiddenWeights[i][j][2] = 0d;
+		// }
+		// if(hiddenWeights[i][j][3] == null) {
+		// hiddenWeights[i][j][3] = 0.05;
+		// }
+		//
+		// Double tempOldWeightDelta = hiddenWeights[i][j][2];
+		//
+		// // new weightDelta
+		// // hiddenWeights[i][j][2] = (E * hiddenWeights[i][j][1]);
+		//
+		// // gradient descent
+		// // outputWeights[i][j][2] = (-E * outputWeights[i][j][1]);
+		//
+		// // momentum
+		// hiddenWeights[i][j][2] = (E * hiddenWeights[i][j][1]) +
+		// momentum * tempOldWeightDelta;
+		//
+		// // new weight
+		// hiddenWeights[i][j][0] += hiddenWeights[i][j][2];
+		//
+		// // RPROP
+		// // rProp(prevGradient, hiddenWeights[i][j]);
+		//
+		// }
+		// }
 
 	}
 

@@ -127,7 +127,7 @@ public class StartController {
 
 	public void clTest(ActionEvent event) {
 
-		userCommunicatorService.userInputDecompose(userSentence);
+//		userCommunicatorService.userInputDecompose(userSentence);
 
 		// userCommunicatorService
 

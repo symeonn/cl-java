@@ -34,20 +34,20 @@ public class DbUtil {
 
 				Package defaultPackage = Packages.findPackage("CL-USER");
 				System.out.println(defaultPackage.getName());
-				Symbol voidsym = defaultPackage.findAccessibleSymbol("GENERATES");
-				System.out.println(voidsym.getDescription().getStringValue());
-				Function myFunction = (Function)voidsym.getSymbolFunction();
+				Symbol myFuncSymbol = defaultPackage.findAccessibleSymbol("GENERATES");
+				System.out.println(myFuncSymbol.getDescription().getStringValue());
+				Function myFunction = (Function)myFuncSymbol.getSymbolFunction();
 				System.out.println(myFunction.printObject());
-//				JavaObject parameter = new JavaObject ("*simple-grammar*");
+				JavaObject parameter = new JavaObject ("*simple-grammar*");
 				Symbol ttsym = defaultPackage.findAccessibleSymbol("*SIMPLE-GRAMMAR*");
 				LispObject sg = ttsym.getSymbolValue();
-//				System.out.println(ttsym.getDescription().getStringValue());
+				System.out.println(ttsym.getDescription().getStringValue());
 				System.out.println(ttsym.name.toString());
-//				Parameter parameter = ttsym.getp
-//				SimpleString ss = ttsym.name;
-//				LispObject ob = JavaObject.getInstance(new SimpleString("*simple-grammar*"), false);
-//				System.out.println(interpreter.eval("(GENERATES *SIMPLE-GRAMMAR*)"));
-//				System.out.println(myFunction.execute(ttsym.name));
+//				Parameter parameter1 = ttsym.getp
+				SimpleString ss = ttsym.name;
+				LispObject ob = JavaObject.getInstance(new SimpleString("*simple-grammar*"), false);
+				System.out.println(interpreter.eval("(GENERATES *SIMPLE-GRAMMAR*)"));
+				System.out.println(myFunction.execute(ttsym.name));
 				Cons list =  (Cons) myFunction.execute(sg);
 				LispObject result = myFunction.execute(sg);
 //				String tt = list.getStringValue();
@@ -55,7 +55,7 @@ public class DbUtil {
 				System.out.println(result.toString());
 				System.out.println(result.printObject());
 //				System.out.println(list.chars());
-//				Load.loadSystemFile("D:\\lispfunctions.lisp", false);
+				Load.loadSystemFile("D:\\lispfunctions.lisp", false);
 				responce =  result.printObject();
 			}
 		};
