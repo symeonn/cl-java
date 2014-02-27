@@ -41,7 +41,7 @@ public class Main {
 
 	public static void main(String[] argv) {
 		
-		compoundCheck();
+//		compoundCheck();
 //		forLoopCheck();
 //		switchTest();
 //		checkMassiveFunc();
